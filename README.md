@@ -1,59 +1,54 @@
-# MyPortfolio
+# Ahmad Awada — Developer Portfolio
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.3.
+A professional, responsive portfolio presenting Ahmad Awada's Angular specialization, enterprise frontend experience, technical capabilities, and selected projects.
 
-## Development server
+## Stack
 
-To start a local development server, run:
+- Angular 22 with standalone components, Signals, strict TypeScript, SSR, hydration, and prerendering
+- TypeScript 6
+- Tailwind CSS 4
+- Netlify static deployment
 
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Development
 
 ```bash
-ng generate component component-name
+npm install
+npm start
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Open `http://localhost:4200`.
+
+## Production build
 
 ```bash
-ng generate --help
+npm run build
 ```
 
-## Building
+The `/**` server route uses Angular's `RenderMode.Prerender`. The build generates search-engine-friendly HTML in `dist/my-portfolio/browser`; the optional Node SSR server is available with `npm run serve:ssr:my-portfolio` after building.
 
-To build the project run:
+## Portfolio content
 
-```bash
-ng build
-```
+Update `src/app/data/portfolio.data.ts` to change personal information, navigation, skills, experience, projects, technical highlights, resume URL, social links, and the production site URL. Models are defined in `src/app/models/portfolio.model.ts`.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Project links are omitted automatically when their values are `null`. Contact links are omitted when empty.
 
-## Running unit tests
+## Resume
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Place the PDF at `public/assets/resume/Ahmad-Awada-Resume.pdf`, or update the centralized `resumeUrl` value.
 
-```bash
-ng test
-```
+## Project screenshots
 
-## Running end-to-end tests
+Place optimized AVIF or WebP images in `public/assets/projects/`, then set the relevant project's `image` value in the portfolio data. Cards remain intentionally polished without images until real screenshots are supplied.
 
-For end-to-end (e2e) testing, run:
+## Deployment
 
-```bash
-ng e2e
-```
+Connect the repository to Netlify. `netlify.toml` runs `npm run build` and publishes `dist/my-portfolio/browser`. The portfolio currently has one prerendered public route, so no SPA catch-all redirect is needed. If separate routes are added, include them in Angular's prerender configuration and verify their generated HTML paths.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## TODO before publishing
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Replace company, location, and employment date placeholders.
+- Add LinkedIn, GitHub, and email values in `socialLinks`.
+- Add the production domain in `siteUrl`, canonical metadata, Open Graph URL, and sitemap.
+- Add the actual resume PDF.
+- Add real project URLs and screenshots only where they are available and shareable.
+- Review whether the availability badge should remain enabled.

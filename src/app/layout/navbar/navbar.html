@@ -1,0 +1,9 @@
+<header class="site-header fixed inset-x-0 top-0 z-50" [class.header-scrolled]="scrolled()">
+  <div class="scroll-progress" [style.width.%]="scrollProgress()" aria-hidden="true"></div>
+  <nav class="mx-auto flex h-18 max-w-7xl items-center justify-between px-5 sm:px-8" aria-label="Primary navigation">
+    <a href="#home" class="group flex items-center gap-3 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-600" (click)="closeMenu()"><span class="brand-mark grid size-9 place-items-center rounded-full bg-slate-950 text-sm font-bold text-white dark:bg-cyan-300 dark:text-slate-950">AA</span><span class="font-semibold tracking-tight">Ahmad Awada</span></a>
+    <div class="hidden items-center gap-1 lg:flex">@for (item of data.navigation; track item.sectionId) { <a [href]="'#' + item.sectionId" class="nav-link px-3 py-2 text-sm font-semibold text-slate-600 dark:text-slate-400" [class.nav-active]="activeSection() === item.sectionId">{{ item.label }}</a> }</div>
+    <div class="flex items-center gap-2"><button type="button" class="icon-button" (click)="theme.toggle()" [attr.aria-label]="theme.theme() === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'"><span class="theme-glyph" aria-hidden="true">{{ theme.theme() === 'dark' ? 'L' : 'D' }}</span></button><button type="button" class="icon-button lg:hidden" (click)="toggleMenu()" aria-controls="mobile-menu" [attr.aria-expanded]="menuOpen()" aria-label="Toggle navigation menu"><span class="menu-glyph" aria-hidden="true">{{ menuOpen() ? '×' : '≡' }}</span></button></div>
+  </nav>
+  <div id="mobile-menu" class="mobile-menu lg:hidden" [class.mobile-menu-open]="menuOpen()" [attr.aria-hidden]="!menuOpen()">@for (item of data.navigation; track item.sectionId) { <a [href]="'#' + item.sectionId" (click)="closeMenu()" [attr.tabindex]="menuOpen() ? 0 : -1">{{ item.label }}<span>0{{ $index + 1 }}</span></a> }</div>
+</header>

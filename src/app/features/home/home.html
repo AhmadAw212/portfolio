@@ -1,0 +1,52 @@
+<main>
+  <section id="home" class="hero-section">
+    <div class="hero-rule" aria-hidden="true"></div>
+    <div class="section-container hero-layout">
+      <div class="hero-copy">
+        <div class="hero-kicker"><span>Front-end engineering</span><span>Angular · TypeScript</span></div>
+        <h1>Ahmad<br><span>Awada</span></h1>
+        <p class="hero-statement">I design and build enterprise frontend systems for complex, real-world work.</p>
+        <p class="hero-support">Angular architecture, micro frontends, API-driven workflows, and dependable product experiences—with additional React Native and full-stack experience.</p>
+        <div class="hero-actions"><a href="#projects" class="text-link">Explore selected work <span>↓</span></a><a [href]="data.resumeUrl" download class="text-link muted">Download résumé <span>↗</span></a><a href="#contact" class="text-link muted">Get in touch <span>↗</span></a></div>
+      </div>
+      <aside class="hero-aside" aria-label="Professional profile">
+        <div class="system-map" aria-hidden="true">
+          <div class="system-node node-shell"><span>Shell</span><small>Angular</small></div>
+          <div class="system-node node-domain"><span>Domain</span><small>Micro frontend</small></div>
+          <div class="system-node node-api"><span>API</span><small>REST</small></div>
+          <i class="system-line line-one"></i><i class="system-line line-two"></i>
+          <span class="system-coordinate coordinate-one">01 / UI</span><span class="system-coordinate coordinate-two">03 / DATA</span>
+        </div>
+        <div class="hero-aside-copy"><p class="mono-label">Primary discipline</p><strong>{{ data.personal.specialization }}</strong><div class="aside-list"><span>Enterprise Angular</span><span>Micro frontends</span><span>React Native</span><span>REST integration</span></div>@if (data.personal.availability.enabled) { <p class="availability"><i></i>{{ data.personal.availability.label }}</p> }</div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="about" class="editorial-section section-tint">
+    <div class="section-container"><header appReveal class="section-intro"><p class="section-index">01 / About</p><h2>Frontend engineering with structure behind every screen.</h2></header><div appReveal [revealDelay]="90" class="about-grid"><p class="about-lead">Complex software should still feel clear to the people using it.</p><div class="about-body">@for (paragraph of data.personal.about; track paragraph) { <p>{{ paragraph }}</p> }</div></div></div>
+  </section>
+
+  <section id="skills" class="editorial-section">
+    <div class="section-container"><header appReveal class="section-intro split"><div><p class="section-index">02 / Capabilities</p><h2>Technical stack</h2></div><p>A practical toolkit shaped by production systems—not a checklist of passing familiarity.</p></header>
+      <div class="skills-matrix">@for (group of data.skills; track group.title; let i = $index) { <article appReveal [revealDelay]="i * 70" class="skill-row"><div><span class="row-index">0{{ i + 1 }}</span><h3>{{ group.title }}</h3><p>{{ group.description }}</p></div><ul>@for (skill of group.skills; track skill) { <li [class.skill-primary]="skill === 'Angular' || skill === 'TypeScript'">{{ skill }}</li> }</ul></article> }</div>
+    </div>
+  </section>
+
+  <section id="experience" class="editorial-section section-tint">
+    <div class="section-container"><header appReveal class="section-intro split"><div><p class="section-index">03 / Experience</p><h2>Professional work</h2></div><p>Engineering responsibility across business-critical Angular systems and maintained mobile products.</p></header>
+      <div class="timeline">@for (experience of data.experience; track experience.role; let i = $index) { <article appReveal [revealDelay]="i * 90" class="timeline-entry"><div class="timeline-marker"><span></span></div><div class="timeline-meta"><p>{{ experience.startDate }} — {{ experience.endDate }}</p><span>{{ experience.location }}</span></div><div class="timeline-content"><p class="mono-label">{{ experience.company }}</p><h3>{{ experience.role }}</h3><p class="experience-summary">{{ experience.description }}</p><ul class="responsibility-list">@for (item of experience.responsibilities; track item) { <li>{{ item }}</li> }</ul><div class="tech-line">@for (tech of experience.technologies; track tech) { <span>{{ tech }}</span> }</div></div></article> }</div>
+    </div>
+  </section>
+
+  <section id="projects" class="editorial-section projects-section">
+    <div class="section-container"><header appReveal class="section-intro split"><div><p class="section-index">04 / Selected work</p><h2>Systems, not just screens.</h2></div><p>Representative work across enterprise operations, independent product delivery, and production application maintenance.</p></header><div class="projects-list">@for (project of data.projects; track project.title; let i = $index) { <app-project-card [project]="project" [index]="i" /> }</div></div>
+  </section>
+
+  <section id="highlights" class="editorial-section highlights-section">
+    <div class="section-container"><header appReveal class="section-intro light"><p class="section-index">05 / Engineering depth</p><h2>What sits beneath the interface.</h2></header><div class="highlight-grid">@for (highlight of data.technicalHighlights; track highlight.title; let i = $index) { <article appReveal [revealDelay]="i * 70"><span class="row-index">0{{ i + 1 }}</span><h3>{{ highlight.title }}</h3><p>{{ highlight.description }}</p><div class="tech-line dark-line">@for (tech of highlight.technologies; track tech) { <span>{{ tech }}</span> }</div></article> }</div></div>
+  </section>
+
+  <section id="resume" class="editorial-section resume-section"><div appReveal class="section-container resume-layout"><p class="section-index">06 / Résumé</p><h2>Experience,<br>in one document.</h2><p>For the concise version of my background, technologies, and engineering responsibilities.</p><a [href]="data.resumeUrl" download class="text-link">Download résumé <span>↓</span></a></div></section>
+
+  <section id="contact" class="editorial-section contact-section"><div appReveal class="section-container contact-layout"><div><p class="section-index">07 / Contact</p><h2>Let’s build something<br>useful.</h2></div><div class="contact-copy"><p>Hiring for an Angular role, planning a frontend platform, or discussing a freelance opportunity? I’d be glad to hear about it.</p><div class="contact-links">@if (data.socialLinks.email) { <a [href]="'mailto:' + data.socialLinks.email">Email <span>↗</span></a> } @if (data.socialLinks.linkedin) { <a [href]="data.socialLinks.linkedin" target="_blank" rel="noopener noreferrer">LinkedIn <span>↗</span></a> } @if (data.socialLinks.github) { <a [href]="data.socialLinks.github" target="_blank" rel="noopener noreferrer">GitHub <span>↗</span></a> } @if (!data.socialLinks.email && !data.socialLinks.linkedin && !data.socialLinks.github) { <p class="contact-placeholder">Contact details are ready to appear when configured.</p> }</div></div></div></section>
+</main>
