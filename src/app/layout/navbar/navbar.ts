@@ -25,8 +25,10 @@ export class Navbar {
         this.scrollProgress.set(available > 0 ? Math.min(100, (window.scrollY / available) * 100) : 0);
       };
       window.addEventListener('scroll', updateScroll, { passive: true });
+      const closeOnDesktop = (): void => { if (window.innerWidth >= 1024) this.closeMenu(); };
+      window.addEventListener('resize', closeOnDesktop, { passive: true });
       updateScroll();
-      this.destroyRef.onDestroy(() => window.removeEventListener('scroll', updateScroll));
+      this.destroyRef.onDestroy(() => { window.removeEventListener('scroll', updateScroll); window.removeEventListener('resize', closeOnDesktop); });
       if (!('IntersectionObserver' in window)) return;
       const observer = new IntersectionObserver(entries => {
         const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];

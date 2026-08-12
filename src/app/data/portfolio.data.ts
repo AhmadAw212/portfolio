@@ -17,8 +17,8 @@ export const PORTFOLIO_DATA: PortfolioData = {
     { label: 'Home', sectionId: 'home' },
     { label: 'About', sectionId: 'about' },
     { label: 'Skills', sectionId: 'skills' },
+    { label: 'Work', sectionId: 'projects' },
     { label: 'Experience', sectionId: 'experience' },
-    { label: 'Projects', sectionId: 'projects' },
     { label: 'Contact', sectionId: 'contact' },
   ],
   skills: [
@@ -72,10 +72,10 @@ export const PORTFOLIO_DATA: PortfolioData = {
   experience: [
     {
       role: 'Front-End Developer',
-      company: 'TODO: Add company name',
-      location: 'TODO: Add location',
-      startDate: 'TODO: Start date',
-      endDate: 'TODO: End date',
+      company: 'Claims Express',
+      location: 'Lebanon · On-site · Full-time',
+      startDate: 'Jan 2023',
+      endDate: 'Present',
       description:
         'Engineering enterprise Angular applications that support complex operational workflows and long-lived product requirements.',
       responsibilities: [
@@ -97,10 +97,10 @@ export const PORTFOLIO_DATA: PortfolioData = {
     },
     {
       role: 'Mobile Application Developer',
-      company: 'TODO: Add company or engagement',
-      location: 'TODO: Add location',
-      startDate: 'TODO: Start date',
-      endDate: 'TODO: End date',
+      company: 'Claims Express',
+      location: 'Lebanon · On-site · Full-time',
+      startDate: 'Jan 2023',
+      endDate: 'Present',
       description:
         'Maintained existing React Native applications and supported reliable mobile release workflows.',
       responsibilities: [
@@ -209,6 +209,10 @@ export const PORTFOLIO_DATA: PortfolioData = {
     },
   ],
   resumeUrl: '/assets/resume/Ahmad-Awada-Resume.pdf',
-  socialLinks: { linkedin: '', github: '', email: '' },
+  socialLinks: {
+    linkedin: 'https://www.linkedin.com/in/ahmad-awada-6252431a1',
+    github: 'https://github.com/AhmadAw212',
+    email: 'awadaahmad791@gmail.com',
+  },
   siteUrl: '', // TODO: Add the production origin, e.g. https://example.com, before publishing.
 };

@@ -1,17 +1,50 @@
-<article appReveal [revealDelay]="index() * 70" class="project-feature" [class.project-reverse]="index() % 2 === 1">
+<article
+  appReveal
+  [revealDelay]="index() * 70"
+  class="project-card"
+  [class.project-reverse]="index() % 2 === 1"
+>
+  <div class="project-visual visual-{{ index() + 1 }}" aria-hidden="true">
+    <div class="visual-grid"></div>
+    <span class="visual-number">0{{ index() + 1 }}</span>
+    <div class="visual-window">
+      <div class="window-bar"><i></i><i></i><i></i></div>
+      <div class="window-body"><span></span><span></span><span></span><span></span></div>
+    </div>
+    <p>{{ project().technologies[0] }} / {{ project().type }}</p>
+  </div>
   <div class="project-copy">
-    <div class="project-meta"><span>0{{ index() + 1 }}</span><span>{{ project().type }}</span>@if (project().market) { <span>{{ project().market }}</span> }</div>
+    <div class="project-meta">
+      <span>0{{ index() + 1 }}</span
+      ><span>{{ project().type }}</span>
+      @if (project().market) {
+        <span>{{ project().market }}</span>
+      }
+    </div>
     <h3>{{ project().title }}</h3>
     <p class="project-description">{{ project().description }}</p>
-    <div class="project-columns">
-      <div><p class="detail-label">Selected work</p><ul>@for (item of project().responsibilities; track item) { <li>{{ item }}</li> }</ul></div>
-      <div><p class="detail-label">Key areas</p><ul>@for (item of project().highlights; track item) { <li>{{ item }}</li> }</ul></div>
+    <div class="project-details">
+      <div>
+        <p class="detail-label">Contribution</p>
+        <ul>
+          @for (item of project().responsibilities; track item) {
+            <li>{{ item }}</li>
+          }
+        </ul>
+      </div>
+      <div>
+        <p class="detail-label">Scope</p>
+        <ul>
+          @for (item of project().highlights; track item) {
+            <li>{{ item }}</li>
+          }
+        </ul>
+      </div>
     </div>
-    <div class="tech-line" aria-label="Technologies">@for (tech of project().technologies; track tech) { <span>{{ tech }}</span> }</div>
-    @if (project().githubUrl || project().liveUrl) { <div class="project-links">@if (project().githubUrl) { <a [href]="project().githubUrl" target="_blank" rel="noopener noreferrer">Source code <span>↗</span></a> } @if (project().liveUrl) { <a [href]="project().liveUrl" target="_blank" rel="noopener noreferrer">View project <span>↗</span></a> }</div> }
-  </div>
-  <div class="project-visual" aria-hidden="true">
-    <div class="project-grid"></div><span class="visual-index">0{{ index() + 1 }}</span>
-    <div class="visual-caption"><span>{{ project().technologies[0] }}</span><span>Ahmad Awada / Selected work</span></div>
+    <div class="tech-line">
+      @for (tech of project().technologies; track tech) {
+        <span>{{ tech }}</span>
+      }
+    </div>
   </div>
 </article>

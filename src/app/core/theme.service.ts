@@ -16,11 +16,7 @@ export class ThemeService {
       typeof window.matchMedia === 'function' &&
       window.matchMedia('(prefers-color-scheme: light)').matches;
     const selected: Theme =
-      stored === 'light' || stored === 'dark'
-        ? stored
-        : prefersLight
-          ? 'light'
-          : 'dark';
+      stored === 'light' || stored === 'dark' ? stored : prefersLight ? 'light' : 'dark';
     this.setTheme(selected, false);
   }
 
