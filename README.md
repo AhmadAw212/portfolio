@@ -42,13 +42,26 @@ Place optimized AVIF or WebP images in `public/assets/projects/`, then set the r
 
 ## Deployment
 
-Connect the repository to Netlify. `netlify.toml` runs `npm run build` and publishes `dist/my-portfolio/browser`. The portfolio currently has one prerendered public route, so no SPA catch-all redirect is needed. If separate routes are added, include them in Angular's prerender configuration and verify their generated HTML paths.
+The repository is ready for continuous deployment on Netlify. The committed `netlify.toml`:
 
-## TODO before publishing
+- builds the production Angular configuration with Node 22;
+- publishes `dist/my-portfolio/browser`;
+- applies long-lived caching only to hashed JavaScript and CSS bundles;
+- adds baseline browser security headers; and
+- falls back to the prerendered `index.html` for future client-side routes.
 
-- Replace company, location, and employment date placeholders.
-- Add LinkedIn, GitHub, and email values in `socialLinks`.
+To deploy:
+
+1. Push this directory to a Git repository.
+2. In Netlify, choose **Add new project** and import that repository.
+3. Netlify will read the build command and publish directory from `netlify.toml`; leave the detected values unchanged.
+4. Deploy the site. No environment variables or secrets are required.
+5. After assigning the final domain, update `siteUrl`, the canonical/Open Graph metadata in `src/index.html`, and `public/sitemap.xml`, then deploy again.
+
+Deploy previews and branch deploys use the same production build configuration.
+
+## Optional content improvements
+
 - Add the production domain in `siteUrl`, canonical metadata, Open Graph URL, and sitemap.
-- Add the actual resume PDF.
 - Add real project URLs and screenshots only where they are available and shareable.
 - Review whether the availability badge should remain enabled.

@@ -113,6 +113,37 @@ export const PORTFOLIO_DATA: PortfolioData = {
   ],
   projects: [
     {
+      title: 'TravelShield Insurance Platform',
+      type: 'Frontend architecture & application development',
+      description:
+        'A feature-rich insurance operations platform for managing travel and ticket-cancellation products, quotes, policies, claims, companies, users, and reporting workflows.',
+      technologies: [
+        'Angular 22',
+        'TypeScript',
+        'Signals',
+        'RxJS',
+        'Reactive Forms',
+        'Angular CDK',
+        'Tailwind CSS',
+        'REST APIs',
+      ],
+      responsibilities: [
+        'Architected a feature-first standalone Angular application with lazy-loaded domains, typed data-access layers, and reusable UI and form primitives.',
+        'Built multi-step quote, product, policy, and claim workflows with reactive forms, signal-based state, validation, pricing logic, and document generation.',
+        'Implemented authentication, route guards, role-aware administration, responsive navigation, dashboards, search, notifications, and light/dark themes.',
+      ],
+      highlights: [
+        'Travel and ticket-cancellation insurance domains',
+        'Reusable design system and complex form controls',
+        'PDF and Excel document generation',
+        'Responsive, accessible enterprise interface',
+      ],
+      githubUrl: null,
+      liveUrl: null,
+      image: null,
+      featured: true,
+    },
+    {
       title: 'Enterprise Insurance & Claims Platform',
       type: 'Enterprise application experience',
       description:
